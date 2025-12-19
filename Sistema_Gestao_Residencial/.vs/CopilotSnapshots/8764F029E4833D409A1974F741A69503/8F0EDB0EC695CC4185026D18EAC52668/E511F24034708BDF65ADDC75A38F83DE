@@ -1,0 +1,128 @@
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Sistema_Gestao_Residencial.Data;
+using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.DTOs.Categoria;
+using Sistema_Gestao_Residencial.Models.DTOs.Response;
+using Sistema_Gestao_Residencial.Models.Enums;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+
+namespace Sistema_Gestao_Residencial.Services
+{
+    public class CategoriaService : ICategoriaService
+    {
+        private readonly Sistema_Gestao_DbContext _context;
+        private readonly IMapper _mapper;
+
+        public CategoriaService(Sistema_Gestao_DbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ListCategoriaDto>> GetAllCategorias()
+        {
+            var categorias = await _context.Categorias
+                .Include(c => c.Usuario)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return _mapper.Map<IEnumerable<ListCategoriaDto>>(categorias);
+        }
+
+        public async Task<ResponseDto> CreateCategoria(CreateCategoriaDto dto)
+        {
+            try
+            {
+                var usuario = await _context.Usuarios.FindAsync(dto.UsuarioId);
+                if (usuario == null)
+                {
+                    return new ResponseDto("Usuário não encontrado", 404);
+                }
+
+                // REGRA DE NEGÓCIO: Menor de idade (< 18 anos) não pode criar categorias de Receita
+                if (usuario.Idade < 18 && dto.Finalidade == FinalidadeEnum.Receita)
+                {
+                    return new ResponseDto(
+                        $"Menores de idade (idade atual: {usuario.Idade}) não podem criar categorias de Receita. Apenas categorias de Despesa são permitidas.",
+                        400);
+                }
+
+                var categoria = _mapper.Map<CategoriaModel>(dto);
+                await _context.Categorias.AddAsync(categoria);
+                await _context.SaveChangesAsync();
+
+                return new ResponseDto("Categoria criada com sucesso", 201);
+            }
+            catch
+            {
+                return new ResponseDto("Erro ao criar categoria", 500);
+            }
+        }
+
+        public async Task<ResponseDto> UpdateCategoria(UpdateCategoriaDto dto)
+        {
+            try
+            {
+                var categoria = await _context.Categorias.FindAsync(dto.Id);
+                if (categoria == null)
+                {
+                    return new ResponseDto("Categoria não encontrada", 404);
+                }
+
+                var usuario = await _context.Usuarios.FindAsync(dto.UsuarioId);
+                if (usuario == null)
+                {
+                    return new ResponseDto("Usuário não encontrado", 404);
+                }
+
+                // REGRA DE NEGÓCIO: Menor de idade (< 18 anos) não pode ter categorias de Receita
+                if (usuario.Idade < 18 && dto.Finalidade == FinalidadeEnum.Receita)
+                {
+                    return new ResponseDto(
+                        $"Menores de idade (idade atual: {usuario.Idade}) não podem ter categorias de Receita. Apenas categorias de Despesa são permitidas.",
+                        400);
+                }
+
+                _mapper.Map(dto, categoria);
+                _context.Categorias.Update(categoria);
+                await _context.SaveChangesAsync();
+
+                return new ResponseDto("Categoria atualizada com sucesso", 200);
+            }
+            catch
+            {
+                return new ResponseDto("Erro ao atualizar categoria", 500);
+            }
+        }
+
+        public async Task<ResponseDto> DeleteCategoria(int id)
+        {
+            try
+            {
+                var categoria = await _context.Categorias.FindAsync(id);
+                if (categoria == null)
+                {
+                    return new ResponseDto("Categoria não encontrada", 404);
+                }
+
+                var quantidadeTransacoes = await _context.Transacoes.CountAsync(t => t.CategoriaId == id);
+                if (quantidadeTransacoes > 0)
+                {
+                    return new ResponseDto(
+                        $"Não é possível excluir a categoria. Existem {quantidadeTransacoes} transação(ões) associada(s).",
+                        400);
+                }
+
+                _context.Categorias.Remove(categoria);
+                await _context.SaveChangesAsync();
+
+                return new ResponseDto("Categoria excluída com sucesso", 200);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDto($"Erro ao excluir categoria: {ex.Message}", 500);
+            }
+        }
+    }
+}

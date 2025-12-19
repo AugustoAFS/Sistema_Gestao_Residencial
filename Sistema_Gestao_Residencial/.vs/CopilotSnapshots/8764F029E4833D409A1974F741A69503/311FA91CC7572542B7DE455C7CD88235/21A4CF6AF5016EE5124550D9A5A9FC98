@@ -1,0 +1,89 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Sistema_Gestao_Residencial.Models.DTOs.Transacao;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+
+namespace Sistema_Gestao_Residencial.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class TransacaoController : ControllerBase
+    {
+        private readonly ITransacaoService _service;
+
+        public TransacaoController(ITransacaoService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ListTransacaoDto>>> GetTransacoes()
+        {
+            try
+            {
+                var transacoes = await _service.GetAllTransacoes();
+                return Ok(transacoes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateTransacao(CreateTransacaoDto dto)
+        {
+            try
+            {
+                var response = await _service.CreateTransacao(dto);
+                
+                if (!response.Success)
+                    return StatusCode(response.StatusCode, response);
+
+                return StatusCode(response.StatusCode, response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTransacao(int id, UpdateTransacaoDto dto)
+        {
+            try
+            {
+                if (id != dto.Id)
+                    return BadRequest("O ID da URL não corresponde ao ID do body");
+
+                var response = await _service.UpdateTransacao(dto);
+                
+                if (!response.Success)
+                    return StatusCode(response.StatusCode, response);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTransacao(int id)
+        {
+            try
+            {
+                var response = await _service.DeleteTransacao(id);
+                
+                if (!response.Success)
+                    return StatusCode(response.StatusCode, response);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
+}

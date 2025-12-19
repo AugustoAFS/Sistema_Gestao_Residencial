@@ -1,0 +1,88 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Sistema_Gestao_Residencial.Models.DTOs.Categoria;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+
+namespace Sistema_Gestao_Residencial.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CategoriaController : ControllerBase
+    {
+        private readonly ICategoriaService _service;
+
+        public CategoriaController(ICategoriaService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ListCategoriaDto>>> GetCategorias()
+        {
+            try
+            {
+                var categorias = await _service.GetAllCategorias();
+                return Ok(categorias);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ListCategoriaDto>> CreateCategoria(CreateCategoriaDto dto)
+        {
+            try
+            {
+                var categoria = await _service.CreateCategoria(dto);
+                return Ok();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCategoria(int id, UpdateCategoriaDto dto)
+        {
+            try
+            {
+                if (id != dto.Id)
+                    return BadRequest("O ID da URL não corresponde ao ID do body");
+
+                var categoria = await _service.UpdateCategoria(dto);
+                return Ok(categoria);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategoria(int id)
+        {
+            try
+            {
+                var resultado = await _service.DeleteCategoria(id);
+                if (!resultado)
+                    return NotFound($"Categoria com ID {id} não encontrada");
+
+                return NoContent();
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
+}

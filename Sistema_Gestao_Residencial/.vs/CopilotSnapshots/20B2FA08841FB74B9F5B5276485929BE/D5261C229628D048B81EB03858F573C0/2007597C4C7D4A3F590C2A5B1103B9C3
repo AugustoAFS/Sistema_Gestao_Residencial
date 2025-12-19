@@ -1,0 +1,68 @@
+﻿using Sistema_Gestao_Residencial.Data;
+using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.Enums;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+namespace Sistema_Gestao_Residencial.Services
+{
+    public class UsuarioService : IUsuarioService
+    {
+        private readonly Sistema_Gestao_DbContext _context;
+        public UsuarioService(Sistema_Gestao_DbContext context)
+        {
+            _context = context;
+        }
+        public Task<UsuarioModel> CreateUsuario(UsuarioModel usuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteUsuario(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<UsuarioModel>> GetAllUsuarios()
+        {
+            var usuarios = await _context.Usuarios
+                .Include(u => u.Transacoes)
+                    .ThenInclude(t => t.Categoria)
+                .ToListAsync();
+
+            decimal totalGeralReceitas = 0;
+            decimal totalGeralDespesas = 0;
+
+            foreach (var usuario in usuarios)
+            {
+                var receitas = usuario.Transacoes?
+                    .Where(t => t.Categoria?.Finalidade == FinalidadeEnum.Receita)
+                    .Sum(t => t.Valor) ?? 0;
+
+                var despesas = usuario.Transacoes?
+                    .Where(t => t.Categoria?.Finalidade == FinalidadeEnum.Despesas)
+                    .Sum(t => t.Valor) ?? 0;
+
+                var saldo = receitas - despesas;
+
+                totalGeralReceitas += receitas;
+                totalGeralDespesas += despesas;
+
+            }
+
+            var saldoGeral = totalGeralReceitas - totalGeralDespesas;
+
+            return usuarios;
+        }
+
+        public Task<UsuarioModel?> GetUsuarioById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<UsuarioModel> UpdateUsuario(UsuarioModel usuario)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

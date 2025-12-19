@@ -1,0 +1,13 @@
+﻿using Sistema_Gestao_Residencial.Models;
+
+namespace Sistema_Gestao_Residencial.Services.Interfaces
+{
+    public interface ITransacaoService
+    {
+        Task<IEnumerable<TransacoesModel>> GetAllTransacoes();
+        Task<TransacoesModel?> GetTransacoesById(int id);
+        Task<TransacoesModel> CreateTransacoes(TransacoesModel transacoes);
+        Task<TransacoesModel> UpdateTransacoes(TransacoesModel transacoes);
+        Task<bool> DeleteTransacoes(int id);
+    }
+}

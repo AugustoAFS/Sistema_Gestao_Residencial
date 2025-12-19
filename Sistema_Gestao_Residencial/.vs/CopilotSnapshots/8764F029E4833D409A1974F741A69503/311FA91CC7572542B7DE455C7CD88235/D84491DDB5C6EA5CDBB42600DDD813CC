@@ -1,0 +1,103 @@
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Sistema_Gestao_Residencial.Data;
+using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.DTOs.Response;
+using Sistema_Gestao_Residencial.Models.DTOs.Usuario;
+using Sistema_Gestao_Residencial.Models.Enums;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+
+namespace Sistema_Gestao_Residencial.Services
+{
+    public class UsuarioService : IUsuarioService
+    {
+        private readonly Sistema_Gestao_DbContext _context;
+        private readonly IMapper _mapper;
+
+        public UsuarioService(Sistema_Gestao_DbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ListUsuarioDto>> GetAllUsuarios()
+        {
+            var usuarios = await _context.Usuarios
+                .AsNoTracking()
+                .ToListAsync();
+
+            return _mapper.Map<IEnumerable<ListUsuarioDto>>(usuarios);
+        }
+
+        public async Task<ResponseDto> CreateUsuario(CreateUsuarioDto dto)
+        {
+            try
+            {
+                var usuario = _mapper.Map<UsuarioModel>(dto);
+                
+                await _context.Usuarios.AddAsync(usuario);
+                await _context.SaveChangesAsync();
+
+                return new ResponseDto("Usuário criado com sucesso", 201);
+            }
+            catch
+            {
+                return new ResponseDto("Erro ao criar usuário", 500);
+            }
+        }
+
+        public async Task<ResponseDto> UpdateUsuario(UpdateUsuarioDto dto)
+        {
+            try
+            {
+                var usuario = await _context.Usuarios.FindAsync(dto.Id);
+
+                if (usuario == null)
+                {
+                    return new ResponseDto("Usuário não encontrado", 404);
+                }
+
+                _mapper.Map(dto, usuario);
+                
+                _context.Usuarios.Update(usuario);
+                await _context.SaveChangesAsync();
+
+                return new ResponseDto("Usuário atualizado com sucesso", 200);
+            }
+            catch
+            {
+                return new ResponseDto("Erro ao atualizar usuário", 500);
+            }
+        }
+
+        public async Task<ResponseDto> DeleteUsuario(int id)
+        {
+            try
+            {
+                var usuario = await _context.Usuarios.FindAsync(id);
+
+                if (usuario == null)
+                {
+                    return new ResponseDto("Usuário não encontrado", 404);
+                }
+
+                var possuiCategorias = await _context.Categorias.AnyAsync(c => c.UsuarioId == id);
+                var possuiTransacoes = await _context.Transacoes.AnyAsync(t => t.PessoaId == id);
+
+                if (possuiCategorias || possuiTransacoes)
+                {
+                    return new ResponseDto("Não é possível excluir usuário com categorias ou transações associadas", 400);
+                }
+
+                _context.Usuarios.Remove(usuario);
+                await _context.SaveChangesAsync();
+
+                return new ResponseDto("Usuário excluído com sucesso", 200);
+            }
+            catch
+            {
+                return new ResponseDto("Erro ao excluir usuário", 500);
+            }
+        }
+    }
+}

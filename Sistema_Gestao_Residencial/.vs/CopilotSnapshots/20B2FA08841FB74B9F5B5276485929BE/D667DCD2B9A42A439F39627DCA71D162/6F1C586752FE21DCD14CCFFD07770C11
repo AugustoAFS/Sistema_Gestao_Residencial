@@ -1,0 +1,7 @@
+﻿namespace Sistema_Gestao_Residencial.Data.Mapper
+{
+    public class TransacaoMapper : AutoMapper
+    {
+
+    }
+}

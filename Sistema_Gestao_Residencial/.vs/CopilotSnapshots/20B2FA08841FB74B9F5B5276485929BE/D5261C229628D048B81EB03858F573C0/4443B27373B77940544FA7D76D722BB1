@@ -1,0 +1,125 @@
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Sistema_Gestao_Residencial.Data;
+using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.DTOs.Usuario;
+using Sistema_Gestao_Residencial.Models.DTOs.Relatorios;
+using Sistema_Gestao_Residencial.Models.Enums;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+
+namespace Sistema_Gestao_Residencial.Services
+{
+    public class UsuarioService : IUsuarioService
+    {
+        private readonly Sistema_Gestao_DbContext _context;
+        private readonly IMapper _mapper;
+
+        public UsuarioService(Sistema_Gestao_DbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ListUsuarioDto>> GetAllUsuarios()
+        {
+            var usuarios = await _context.Usuarios.ToListAsync();
+            return _mapper.Map<IEnumerable<ListUsuarioDto>>(usuarios);
+        }
+
+        public async Task<ListUsuarioDto?> GetUsuarioById(int id)
+        {
+            var usuario = await _context.Usuarios.FindAsync(id);
+            return usuario != null ? _mapper.Map<ListUsuarioDto>(usuario) : null;
+        }
+
+        public async Task<ListUsuarioDto> CreateUsuario(CreateUsuarioDto dto)
+        {
+            var usuario = _mapper.Map<UsuarioModel>(dto);
+            _context.Usuarios.Add(usuario);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<ListUsuarioDto>(usuario);
+        }
+
+        public async Task<ListUsuarioDto> UpdateUsuario(UpdateUsuarioDto dto)
+        {
+            var usuario = await _context.Usuarios.FindAsync(dto.Id);
+            if (usuario == null)
+                throw new KeyNotFoundException($"Usuário com ID {dto.Id} não encontrado");
+
+            _mapper.Map(dto, usuario);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<ListUsuarioDto>(usuario);
+        }
+
+        public async Task<DeleteUsuarioDto> DeleteUsuario(int id)
+        {
+            var usuario = await _context.Usuarios
+                .Include(u => u.Transacoes)
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (usuario == null)
+                throw new KeyNotFoundException($"Usuário com ID {id} não encontrado");
+
+            var quantidadeTransacoes = usuario.Transacoes?.Count ?? 0;
+            
+            // O cascade está configurado no mapper, então ao deletar o usuário, as transações serão deletadas automaticamente
+            _context.Usuarios.Remove(usuario);
+            await _context.SaveChangesAsync();
+
+            return new DeleteUsuarioDto
+            {
+                Sucesso = true,
+                Mensagem = $"Usuário deletado com sucesso",
+                QuantidadeTransacoesRemovidas = quantidadeTransacoes
+            };
+        }
+
+        public async Task<RelatorioTotaisPorPessoaDto> GetRelatorioTotaisPorPessoa()
+        {
+            var usuarios = await _context.Usuarios
+                .Include(u => u.Transacoes)
+                    .ThenInclude(t => t.Categoria)
+                .ToListAsync();
+
+            var totaisPorPessoa = new List<TotalPorPessoaDto>();
+            decimal totalGeralReceitas = 0;
+            decimal totalGeralDespesas = 0;
+
+            foreach (var usuario in usuarios)
+            {
+                var receitas = usuario.Transacoes?
+                    .Where(t => t.Categoria?.Finalidade == FinalidadeEnum.Receita)
+                    .Sum(t => t.Valor) ?? 0;
+
+                var despesas = usuario.Transacoes?
+                    .Where(t => t.Categoria?.Finalidade == FinalidadeEnum.Despesas)
+                    .Sum(t => t.Valor) ?? 0;
+
+                var saldo = receitas - despesas;
+
+                totaisPorPessoa.Add(new TotalPorPessoaDto
+                {
+                    PessoaId = usuario.Id,
+                    NomePessoa = usuario.Nome,
+                    TotalReceitas = receitas,
+                    TotalDespesas = despesas,
+                    Saldo = saldo
+                });
+
+                totalGeralReceitas += receitas;
+                totalGeralDespesas += despesas;
+            }
+
+            return new RelatorioTotaisPorPessoaDto
+            {
+                TotaisPorPessoa = totaisPorPessoa,
+                TotalGeral = new TotalGeralDto
+                {
+                    TotalReceitas = totalGeralReceitas,
+                    TotalDespesas = totalGeralDespesas,
+                    SaldoLiquido = totalGeralReceitas - totalGeralDespesas
+                }
+            };
+        }
+    }
+}

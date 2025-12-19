@@ -1,0 +1,32 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Sistema_Gestao_Residencial.Models;
+
+namespace Sistema_Gestao_Residencial.Data.Mapper
+{
+    public class CategoriaMapper : IEntityTypeConfiguration<CategoriaModel>
+    {
+        public void Configure(EntityTypeBuilder<CategoriaModel> builder)
+        {
+            builder.ToTable("Categorias");
+
+            builder.HasKey(c => c.Id);
+
+            builder.Property(c => c.Id)
+                .ValueGeneratedOnAdd();
+
+            builder.Property(c => c.Descricao)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            builder.Property(c => c.Finalidade)
+                .IsRequired();
+
+            // Relacionamento com Usuario
+            builder.HasOne(c => c.Usuario)
+                .WithMany()
+                .HasForeignKey(c => c.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
+    }
+}

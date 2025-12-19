@@ -1,0 +1,6 @@
+﻿namespace Sistema_Gestao_Residencial.Models.DTOs.Usuario
+{
+    public class CreateUsuarioDto
+    {
+    }
+}

@@ -1,0 +1,71 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Sistema_Gestao_Residencial.Data;
+using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+using System.Data.Entity.Infrastructure;
+
+namespace Sistema_Gestao_Residencial.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UsuarioController : ControllerBase
+    {
+        private readonly IUsuarioService _service;
+        public UsuarioController(IUsuarioService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet]
+        [Route("/Listar")]
+        public async Task<ActionResult<IEnumerable<UsuarioModel>>> GetUsuarios()
+        {
+            try
+            {
+                var usuarios = await _service.GetAllUsuarios();
+
+                return Ok(usuarios);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/Listar/{id}")]
+        public async Task<ActionResult<UsuarioModel>> GetUsuario(int id)
+        {
+
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("/Criar")]
+        public async Task<ActionResult<UsuarioModel>> CreateUsuario(UsuarioModel usuario)
+        {
+
+
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("/editar/{id}")]
+        public async Task<IActionResult> UpdateUsuario(int id, UsuarioModel usuario)
+        {
+
+            return ok();
+        }
+
+        // DELETE: api/Usuario/5
+        [HttpDelete]
+        [Route("/deletar/{id}")]
+        public async Task<IActionResult> DeleteUsuario(int id)
+        {
+
+            return Ok();
+        }
+    }
+}

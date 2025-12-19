@@ -1,0 +1,118 @@
+.categoria-page {
+  width: 100%;
+}
+
+.categoria-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.categoria-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.categoria-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.categoria-btn:hover {
+  background-color: var(--secondary-dark);
+}
+
+.categoria-content {
+  background-color: var(--bg-primary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.categoria-list {
+  list-style: none;
+}
+
+.categoria-item {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-fast);
+}
+
+.categoria-item:last-child {
+  border-bottom: none;
+}
+
+.categoria-item:hover {
+  background-color: var(--bg-secondary);
+}
+
+.categoria-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoria-item-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+.categoria-badge {
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.categoria-user {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.categoria-delete {
+  background: none;
+  border: none;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  opacity: 0.6;
+  transition: opacity var(--transition-fast);
+}
+
+.categoria-delete:hover:not(:disabled) {
+  opacity: 1;
+}
+
+.categoria-delete:disabled {
+  cursor: not-allowed;
+}
+
+.categoria-loading,
+.categoria-empty {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+}
+
+.categoria-empty button {
+  margin-top: var(--spacing-md);
+}
+
+.categoria-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

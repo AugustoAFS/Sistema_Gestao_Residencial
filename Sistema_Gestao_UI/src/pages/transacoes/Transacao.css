@@ -1,0 +1,139 @@
+.transacao-page {
+  width: 100%;
+}
+
+.transacao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.transacao-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.transacao-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.transacao-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--info-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.transacao-btn:hover {
+  background-color: #2874a6;
+}
+
+.transacao-content {
+  background-color: var(--bg-primary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.transacao-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transacao-table th {
+  text-align: left;
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.transacao-table td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.transacao-table tr:hover {
+  background-color: var(--bg-secondary);
+}
+
+.transacao-badge {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.transacao-badge.entrada {
+  background-color: #d5f4e6;
+  color: var(--success-color);
+}
+
+.transacao-badge.saida {
+  background-color: #fadbd8;
+  color: var(--error-color);
+}
+
+.transacao-valor {
+  font-weight: 600;
+  text-align: right;
+}
+
+.transacao-delete-btn {
+  background: none;
+  border: none;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  opacity: 0.6;
+  transition: opacity var(--transition-fast);
+}
+
+.transacao-delete-btn:hover:not(:disabled) {
+  opacity: 1;
+}
+
+.transacao-delete-btn:disabled {
+  cursor: not-allowed;
+}
+
+.transacao-loading,
+.transacao-empty {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+}
+
+.transacao-empty button {
+  margin-top: var(--spacing-md);
+}
+
+.transacao-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.transacao-table-container {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .transacao-table {
+    font-size: var(--font-size-sm);
+  }
+  
+  .transacao-table th,
+  .transacao-table td {
+    padding: var(--spacing-sm);
+  }
+}

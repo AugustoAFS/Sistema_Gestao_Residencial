@@ -1,0 +1,27 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Sistema_Gestao_Residencial.Data.Mapper;
+using Sistema_Gestao_Residencial.Models;
+
+
+namespace Sistema_Gestao_Residencial.Data
+{   
+    public class Sistema_Gestao_DbContext : DbContext
+    {
+        public Sistema_Gestao_DbContext(DbContextOptions<Sistema_Gestao_DbContext> options) : base(options)
+        {
+        }
+
+        public DbSet<UsuarioModel> Usuarios { get; set; }
+        public DbSet<CategoriaModel> Categorias { get; set; }
+        public DbSet<TransacoesModel> Transacoes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new UsuarioMapper());
+            modelBuilder.ApplyConfiguration(new CategoriaMapper());
+            modelBuilder.ApplyConfiguration(new TransacaoMapper());
+        }
+    }
+}}

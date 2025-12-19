@@ -1,0 +1,89 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Sistema_Gestao_Residencial.Models.DTOs.Categoria;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+
+namespace Sistema_Gestao_Residencial.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CategoriaController : ControllerBase
+    {
+        private readonly ICategoriaService _service;
+
+        public CategoriaController(ICategoriaService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ListCategoriaDto>>> GetCategorias()
+        {
+            try
+            {
+                var categorias = await _service.GetAllCategorias();
+                return Ok(categorias);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateCategoria(CreateCategoriaDto dto)
+        {
+            try
+            {
+                var response = await _service.CreateCategoria(dto);
+                
+                if (!response.Success)
+                    return StatusCode(response.StatusCode, response);
+
+                return StatusCode(response.StatusCode, response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCategoria(int id, UpdateCategoriaDto dto)
+        {
+            try
+            {
+                if (id != dto.Id)
+                    return BadRequest("O ID da URL não corresponde ao ID do body");
+
+                var response = await _service.UpdateCategoria(dto);
+                
+                if (!response.Success)
+                    return StatusCode(response.StatusCode, response);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategoria(int id)
+        {
+            try
+            {
+                var response = await _service.DeleteCategoria(id);
+                
+                if (!response.Success)
+                    return StatusCode(response.StatusCode, response);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
+}

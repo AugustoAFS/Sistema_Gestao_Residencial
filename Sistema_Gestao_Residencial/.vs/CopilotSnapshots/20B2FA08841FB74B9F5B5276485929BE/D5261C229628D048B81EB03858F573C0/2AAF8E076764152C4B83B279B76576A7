@@ -1,0 +1,17 @@
+﻿using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.DTOs;
+using Sistema_Gestao_Residencial.Models.DTOs.Categoria;
+using Sistema_Gestao_Residencial.Models.DTOs.Relatorios;
+
+namespace Sistema_Gestao_Residencial.Services.Interfaces
+{
+    public interface ICategoriaService
+    {
+        Task<IEnumerable<ListCategoriaDto>> GetAllCategorias();
+        Task<ListCategoriaDto?> GetCategoriaById(int id);
+        Task<ListCategoriaDto> CreateCategoria(CreateCategoriaDto dto);
+        Task<ListCategoriaDto> UpdateCategoria(UpdateCategoriaDto dto);
+        Task<bool> DeleteCategoria(int id);
+        Task<RelatorioTotaisPorCategoriaDto> GetRelatorioTotaisPorCategoria();
+    }
+}

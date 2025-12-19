@@ -1,0 +1,165 @@
+.dashboard {
+  width: 100%;
+}
+
+.dashboard-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.dashboard-welcome {
+  background-color: var(--bg-primary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.dashboard-welcome-text {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.dashboard-card {
+  background-color: var(--bg-primary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dashboard-card-title {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.dashboard-card-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xs);
+}
+
+.dashboard-card-value.positive {
+  color: var(--success-color);
+}
+
+.dashboard-card-value.negative {
+  color: var(--error-color);
+}
+
+.dashboard-card-info {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.dashboard-card-highlight {
+  background: linear-gradient(135deg, var(--secondary-light) 0%, var(--secondary-color) 100%);
+  color: white;
+}
+
+.dashboard-card-highlight .dashboard-card-title,
+.dashboard-card-highlight .dashboard-card-info {
+  color: white;
+  opacity: 0.9;
+}
+
+.dashboard-card-highlight .dashboard-card-value {
+  color: white;
+}
+
+.dashboard-loading {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+}
+
+.dashboard-subtitle {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.dashboard-summary {
+  margin-top: var(--spacing-xl);
+}
+
+.dashboard-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.dashboard-summary-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid;
+}
+
+.dashboard-summary-item.receita {
+  border-left-color: var(--success-color);
+}
+
+.dashboard-summary-item.despesa {
+  border-left-color: var(--error-color);
+}
+
+.dashboard-summary-item.saldo.positivo {
+  border-left-color: var(--success-color);
+  background-color: #d5f4e6;
+}
+
+.dashboard-summary-item.saldo.negativo {
+  border-left-color: var(--error-color);
+  background-color: #fadbd8;
+}
+
+.dashboard-summary-icon {
+  font-size: 2.5rem;
+}
+
+.dashboard-summary-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.dashboard-summary-value {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

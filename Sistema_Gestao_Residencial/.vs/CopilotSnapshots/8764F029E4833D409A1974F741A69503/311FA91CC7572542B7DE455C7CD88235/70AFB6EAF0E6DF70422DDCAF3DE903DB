@@ -1,0 +1,106 @@
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Sistema_Gestao_Residencial.Data;
+using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.DTOs.Transacao;
+using Sistema_Gestao_Residencial.Models.Enums;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+
+namespace Sistema_Gestao_Residencial.Services
+{
+    public class TransacaoService : ITransacaoService
+    {
+        private readonly Sistema_Gestao_DbContext _context;
+        private readonly IMapper _mapper;
+
+        public TransacaoService(Sistema_Gestao_DbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ListTransacaoDto>> GetAllTransacoes()
+        {
+            var transacoes = await _context.Transacoes
+                .Include(t => t.Categoria)
+                .Include(t => t.Pessoa)
+                .ToListAsync();
+
+            return _mapper.Map<IEnumerable<ListTransacaoDto>>(transacoes);
+        }
+
+        public async Task<ListTransacaoDto> CreateTransacao(CreateTransacaoDto dto)
+        {
+            var pessoa = await _context.Usuarios.FindAsync(dto.PessoaId);
+
+            if (pessoa == null)
+                throw new KeyNotFoundException($"Pessoa com ID {dto.PessoaId} não encontrada");
+
+            var categoria = await _context.Categorias.FindAsync(dto.CategoriaId);
+
+            if (categoria == null)
+                throw new KeyNotFoundException($"Categoria com ID {dto.CategoriaId} não encontrada");
+
+            if (pessoa.Idade < 18 && categoria.Finalidade == FinalidadeEnum.Receita)
+            {
+                throw new InvalidOperationException(
+                    $"Menores de idade (idade atual: {pessoa.Idade}) não podem registrar receitas. " +
+                    $"Apenas despesas são permitidas.");
+            }
+
+            var transacao = _mapper.Map<TransacoesModel>(dto);
+            _context.Transacoes.Add(transacao);
+            await _context.SaveChangesAsync();
+
+            await _context.Entry(transacao).Reference(t => t.Categoria).LoadAsync();
+            await _context.Entry(transacao).Reference(t => t.Pessoa).LoadAsync();
+
+            return _mapper.Map<ListTransacaoDto>(transacao);
+        }
+
+        public async Task<ListTransacaoDto> UpdateTransacao(UpdateTransacaoDto dto)
+        {
+            var transacao = await _context.Transacoes.FindAsync(dto.Id);
+
+            if (transacao == null)
+                throw new KeyNotFoundException($"Transação com ID {dto.Id} não encontrada");
+
+            var pessoa = await _context.Usuarios.FindAsync(dto.PessoaId);
+
+            if (pessoa == null)
+                throw new KeyNotFoundException($"Pessoa com ID {dto.PessoaId} não encontrada");
+
+            var categoria = await _context.Categorias.FindAsync(dto.CategoriaId);
+
+            if (categoria == null)
+                throw new KeyNotFoundException($"Categoria com ID {dto.CategoriaId} não encontrada");
+
+            // REGRA DE NEGÓCIO: Menor de idade (< 18 anos) só pode ter despesas
+            if (pessoa.Idade < 18 && categoria.Finalidade == FinalidadeEnum.Receita)
+            {
+                throw new InvalidOperationException(
+                    $"Menores de idade (idade atual: {pessoa.Idade}) não podem registrar receitas. " +
+                    $"Apenas despesas são permitidas.");
+            }
+
+            _mapper.Map(dto, transacao);
+            await _context.SaveChangesAsync();
+
+            await _context.Entry(transacao).Reference(t => t.Categoria).LoadAsync();
+            await _context.Entry(transacao).Reference(t => t.Pessoa).LoadAsync();
+
+            return _mapper.Map<ListTransacaoDto>(transacao);
+        }
+
+        public async Task<bool> DeleteTransacao(int id)
+        {
+            var transacao = await _context.Transacoes.FindAsync(id);
+            if (transacao == null)
+                return false;
+
+            _context.Transacoes.Remove(transacao);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+    }
+}

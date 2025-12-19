@@ -1,0 +1,13 @@
+﻿using Sistema_Gestao_Residencial.Models;
+
+namespace Sistema_Gestao_Residencial.Services.Interfaces
+{
+    public interface IUsuarioService
+    {
+        Task<IEnumerable<UsuarioModel>> GetAllUsuarios();
+        Task<UsuarioModel?> GetUsuarioById(int id);
+        Task<UsuarioModel> CreateUsuario(UsuarioModel usuario);
+        Task<UsuarioModel> UpdateUsuario(UsuarioModel usuario);
+        Task<bool> DeleteUsuario(int id);
+    }
+}

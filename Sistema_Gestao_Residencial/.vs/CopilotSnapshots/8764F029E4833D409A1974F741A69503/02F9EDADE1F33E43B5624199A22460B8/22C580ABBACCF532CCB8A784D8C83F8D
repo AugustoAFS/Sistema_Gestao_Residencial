@@ -1,0 +1,43 @@
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Sistema_Gestao_Residencial.Data;
+using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.DTOs.Response;
+using Sistema_Gestao_Residencial.Models.DTOs.Usuario;
+using Sistema_Gestao_Residencial.Models.Enums;
+using Sistema_Gestao_Residencial.Services.Interfaces;
+
+namespace Sistema_Gestao_Residencial.Services
+{
+    public class UsuarioService : IUsuarioService
+    {
+        private readonly Sistema_Gestao_DbContext _context;
+        private readonly IMapper _mapper;
+
+        public UsuarioService(Sistema_Gestao_DbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ListUsuarioDto>> GetAllUsuarios()
+        {
+
+        }
+
+        public async Task<ResponseDto> CreateUsuario(CreateUsuarioDto dto)
+        {
+
+        }
+
+        public async Task<ResponseDto> UpdateUsuario(UpdateUsuarioDto dto)
+        {
+
+        }
+
+        public async Task<ResponseDto> DeleteUsuario(int id)
+        {
+
+        }
+    }
+}

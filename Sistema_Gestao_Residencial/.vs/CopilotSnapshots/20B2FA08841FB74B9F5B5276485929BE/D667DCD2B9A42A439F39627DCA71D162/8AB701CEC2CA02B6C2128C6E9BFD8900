@@ -1,0 +1,39 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Sistema_Gestao_Residencial.Models;
+
+namespace Sistema_Gestao_Residencial.Data.Mapper
+{
+    public class TransacaoMapper : IEntityTypeConfiguration<TransacoesModel>
+    {
+        public void Configure(EntityTypeBuilder<TransacoesModel> builder)
+        {
+            builder.ToTable("Transacoes");
+
+            builder.HasKey(t => t.Id);
+
+            builder.Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            builder.Property(t => t.Descricao)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            builder.Property(t => t.Valor)
+                .IsRequired()
+                .HasColumnType("decimal(18,2)");
+
+            // Relacionamento com Categoria
+            builder.HasOne(t => t.Categoria)
+                .WithMany()
+                .HasForeignKey(t => t.CategoriaId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Relacionamento com Pessoa (Usuario)
+            builder.HasOne(t => t.Pessoa)
+                .WithMany()
+                .HasForeignKey(t => t.PessoaId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
+    }
+}

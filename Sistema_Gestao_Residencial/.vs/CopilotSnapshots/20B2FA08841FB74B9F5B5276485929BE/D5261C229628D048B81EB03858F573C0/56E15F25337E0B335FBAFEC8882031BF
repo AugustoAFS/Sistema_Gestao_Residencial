@@ -1,0 +1,16 @@
+﻿using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.DTOs.Usuario;
+using Sistema_Gestao_Residencial.Models.DTOs.Relatorios;
+
+namespace Sistema_Gestao_Residencial.Services.Interfaces
+{
+    public interface IUsuarioService
+    {
+        Task<IEnumerable<ListUsuarioDto>> GetAllUsuarios();
+        Task<ListUsuarioDto?> GetUsuarioById(int id);
+        Task<ListUsuarioDto> CreateUsuario(CreateUsuarioDto dto);
+        Task<ListUsuarioDto> UpdateUsuario(UpdateUsuarioDto dto);
+        Task<DeleteUsuarioDto> DeleteUsuario(int id);
+        Task<RelatorioTotaisPorPessoaDto> GetRelatorioTotaisPorPessoa();
+    }
+}

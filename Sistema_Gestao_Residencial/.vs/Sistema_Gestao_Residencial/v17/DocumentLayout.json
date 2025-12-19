@@ -1,0 +1,224 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\models\\dtos\\usuario\\listusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:models\\dtos\\usuario\\listusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\data\\mapper\\categoriamapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:data\\mapper\\categoriamapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\services\\categoriaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:services\\categoriaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\services\\transacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:services\\transacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\controllers\\transacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:controllers\\transacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\services\\interfaces\\itransacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:services\\interfaces\\itransacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\services\\interfaces\\icategoriaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:services\\interfaces\\icategoriaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|c:\\users\\augus\\onedrive\\desktop\\sistema_gestao_teste\\sistema_gestao_residencial\\services\\interfaces\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EAF6F47-1AAC-4A0A-82E7-3384DAA8D885}|Sistema_Gestao_Residencial.csproj|solutionrelative:services\\interfaces\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ListUsuarioDto.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Models\\DTOs\\Usuario\\ListUsuarioDto.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\Usuario\\ListUsuarioDto.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Models\\DTOs\\Usuario\\ListUsuarioDto.cs",
+              "RelativeToolTip": "Models\\DTOs\\Usuario\\ListUsuarioDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T01:52:22.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoriaMapper.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Data\\Mapper\\CategoriaMapper.cs",
+              "RelativeDocumentMoniker": "Data\\Mapper\\CategoriaMapper.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Data\\Mapper\\CategoriaMapper.cs",
+              "RelativeToolTip": "Data\\Mapper\\CategoriaMapper.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T01:30:08.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TransacaoController.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Controllers\\TransacaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TransacaoController.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Controllers\\TransacaoController.cs",
+              "RelativeToolTip": "Controllers\\TransacaoController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:33:40.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CategoriaController.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Controllers\\CategoriaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriaController.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Controllers\\CategoriaController.cs",
+              "RelativeToolTip": "Controllers\\CategoriaController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAwwFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:31:57.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:26:29.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoriaService.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\CategoriaService.cs",
+              "RelativeDocumentMoniker": "Services\\CategoriaService.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\CategoriaService.cs",
+              "RelativeToolTip": "Services\\CategoriaService.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAASwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:24:59.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ICategoriaService.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\Interfaces\\ICategoriaService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\ICategoriaService.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\Interfaces\\ICategoriaService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\ICategoriaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:24:10.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ITransacaoService.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\Interfaces\\ITransacaoService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\ITransacaoService.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\Interfaces\\ITransacaoService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\ITransacaoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:11:37.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TransacaoService.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\TransacaoService.cs",
+              "RelativeDocumentMoniker": "Services\\TransacaoService.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\TransacaoService.cs",
+              "RelativeToolTip": "Services\\TransacaoService.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAwHgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:11:34.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "Services\\UsuarioService.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\UsuarioService.cs",
+              "RelativeToolTip": "Services\\UsuarioService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAwIgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T21:21:07.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IUsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\Interfaces\\IUsuarioService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IUsuarioService.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Services\\Interfaces\\IUsuarioService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IUsuarioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T21:19:58.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAgwA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T21:19:49.394Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

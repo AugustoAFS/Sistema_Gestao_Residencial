@@ -1,0 +1,16 @@
+﻿using Sistema_Gestao_Residencial.Models;
+using Sistema_Gestao_Residencial.Models.DTOs.Transacao;
+
+namespace Sistema_Gestao_Residencial.Services.Interfaces
+{
+    public interface ITransacaoService
+    {
+        Task<IEnumerable<ListTransacaoDto>> GetAllTransacoes();
+        Task<ListTransacaoDto?> GetTransacaoById(int id);
+        Task<ListTransacaoDto> CreateTransacao(CreateTransacaoDto dto);
+        Task<ListTransacaoDto> UpdateTransacao(UpdateTransacaoDto dto);
+        Task<bool> DeleteTransacao(int id);
+        Task<IEnumerable<ListTransacaoDto>> GetTransacoesByPessoa(int pessoaId);
+        Task<IEnumerable<ListTransacaoDto>> GetTransacoesByCategoria(int categoriaId);
+    }
+}

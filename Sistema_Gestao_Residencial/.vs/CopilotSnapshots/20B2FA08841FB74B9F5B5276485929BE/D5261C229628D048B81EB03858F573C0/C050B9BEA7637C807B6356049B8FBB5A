@@ -1,0 +1,13 @@
+﻿using Sistema_Gestao_Residencial.Models;
+
+namespace Sistema_Gestao_Residencial.Services.Interfaces
+{
+    public interface ICategoriaService
+    {
+        Task<IEnumerable<CategoriaModel>> GetAllCategorias();
+        Task<CategoriaModel?> GetCategoriaById(int id);
+        Task<CategoriaModel> CreateCategoria(CategoriaModel categoria);
+        Task<CategoriaModel> UpdateCategoria(CategoriaModel categoria);
+        Task<bool> DeleteCategoria(int id);
+    }
+}
