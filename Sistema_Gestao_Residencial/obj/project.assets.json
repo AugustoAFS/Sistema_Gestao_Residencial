@@ -4194,11 +4194,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial.csproj",
+      "projectUniqueName": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial.csproj",
       "projectName": "Sistema_Gestao_Residencial",
-      "projectPath": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial.csproj",
+      "projectPath": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial.csproj",
       "packagesPath": "C:\\Users\\augus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\obj\\",
+      "outputPath": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

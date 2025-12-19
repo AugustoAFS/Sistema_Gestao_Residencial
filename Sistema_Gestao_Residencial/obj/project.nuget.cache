@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9cMw4N/RtIU=",
+  "dgSpecHash": "Pwk9X0oGhc8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Teste\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial.csproj",
+  "projectFilePath": "C:\\Users\\augus\\OneDrive\\Desktop\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial\\Sistema_Gestao_Residencial.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\augus\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\augus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
